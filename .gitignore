@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+.gradle
+build
+out
+/api-tests/build
+/api-tests/out

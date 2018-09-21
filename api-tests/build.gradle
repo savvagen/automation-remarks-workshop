@@ -1,0 +1,39 @@
+plugins {
+    id 'base'
+    id "io.qameta.allure" version "2.5"
+}
+
+ext {
+    restAssuredVersion='3.1.1'
+    jaksonCoreVersion='2.9.6'
+}
+
+
+allure {
+    version = "$allureVersion"
+    autoconfigure = true
+    aspectjweaver = true
+    aspectjVersion = '1.8.10'
+    //resultsDir = file("${rootDir}/build/allure-results")
+    //reportDir = file("${rootDir}/allure-report")
+    useJUnit5 {
+        version = "${allureVersion}"
+    }
+    downloadLink = "https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/$allureVersion/allure-${allureVersion}.zip"
+}
+
+
+
+dependencies {
+    compile(
+            //Test Frameworks
+            ["io.rest-assured:rest-assured:$restAssuredVersion"],
+            // Json Libraries
+            ['org.json:json:20180813'],
+            ["com.fasterxml.jackson.core:jackson-databind:$jaksonCoreVersion"],
+            ["com.fasterxml.jackson.core:jackson-core:$jaksonCoreVersion"]
+    )
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+
+
+}
