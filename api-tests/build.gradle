@@ -16,7 +16,7 @@ allure {
     aspectjweaver = true
     aspectjVersion = '1.8.10'
     resultsDir = file("${rootDir}/api-tests/build/allure-results")
-    reportDir = file("${rootDir}/api-tests//allure-report")
+    reportDir = file("${rootDir}/api-tests/build/reports/allure-report")
     useJUnit5 {
         version = "${allureVersion}"
     }

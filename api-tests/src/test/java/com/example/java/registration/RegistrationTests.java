@@ -6,6 +6,7 @@ import com.example.annotations.Positive;
 import com.example.java.TestBase;
 import com.example.models.Customer;
 import io.restassured.response.ValidatableResponse;
+import org.apiguardian.api.API;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -65,13 +66,12 @@ class RegistrationTests extends TestBase {
         );
     }
 
-    @ParameterizedTest
-    @DisplayName("Register with invalid datat")
+    @ParameterizedTest(name = "Register wit invalid data.")
     @Negative
     @MethodSource("com.example.data_providers.CustomersDataProvider#registrationData")
     void registerCustomerWithInvalidData(Customer account){
         ValidatableResponse r = customerService.registerCustomer(account);
-        assertAll("validate failed: 500 response",
+        assertAll("Verify that response is 400 or 500:",
                 () -> assertEquals(500, r.extract().statusCode()),
                 () -> assertEquals("text/plain; charset=utf-8", r.extract().contentType())
         );
