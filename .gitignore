@@ -5,3 +5,4 @@ build
 out
 /api-tests/build
 /api-tests/out
+/api-tests/allure-results

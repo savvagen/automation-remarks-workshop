@@ -1,6 +1,7 @@
 plugins {
     id 'base'
     id "io.qameta.allure" version "2.5"
+    id "io.franzbecker.gradle-lombok" version "1.14"
 }
 
 ext {
@@ -14,8 +15,8 @@ allure {
     autoconfigure = true
     aspectjweaver = true
     aspectjVersion = '1.8.10'
-    //resultsDir = file("${rootDir}/build/allure-results")
-    //reportDir = file("${rootDir}/allure-report")
+    resultsDir = file("${rootDir}/api-tests/build/allure-results")
+    reportDir = file("${rootDir}/api-tests//allure-report")
     useJUnit5 {
         version = "${allureVersion}"
     }
@@ -26,14 +27,34 @@ allure {
 
 dependencies {
     compile(
-            //Test Frameworks
+            //Test Framework
             ["io.rest-assured:rest-assured:$restAssuredVersion"],
+            ["io.rest-assured:json-path:$restAssuredVersion"],
+            ["io.rest-assured:xml-path:$restAssuredVersion"],
             // Json Libraries
             ['org.json:json:20180813'],
             ["com.fasterxml.jackson.core:jackson-databind:$jaksonCoreVersion"],
-            ["com.fasterxml.jackson.core:jackson-core:$jaksonCoreVersion"]
+            ["com.fasterxml.jackson.core:jackson-core:$jaksonCoreVersion"],
     )
+    // Allure
+    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: "${allureVersion}"
+    // Helper libraries
+    compile group: 'io.rest-assured', name: 'json-schema-validator', version: "$restAssuredVersion"
+    compile 'commons-lang:commons-lang:2.6'
+    compile 'javax.validation:validation-api:1.1.0.CR2'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
 
 
 }
+
+
+clean.doFirst {
+    delete "${rootDir}/api-tests/allure-results"
+    delete "${rootDir}/api-tests/allure-report"
+    delete "${rootDir}/api-tests/target"
+    delete "${rootDir}/api-tests/build"
+    delete "${rootDir}/api-tests/out"
+
+}
+

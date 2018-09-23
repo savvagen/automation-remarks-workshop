@@ -1,0 +1,9 @@
+
+dependencies {
+    compile (
+            // Test Framework
+            ["com.codeborne:selenide:4.14.1"],
+            // Allure
+            ["io.qameta.allure:allure-selenide:$allureVersion"],
+    )
+}

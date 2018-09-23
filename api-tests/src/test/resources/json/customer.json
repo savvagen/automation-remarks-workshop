@@ -1,0 +1,59 @@
+{"_embedded":
+{"customer":[
+  {
+    "firstName":"Eve",
+    "lastName":"Berger",
+    "username":"Eve_Berger",
+    "id":"57a98d98e4b00679b4a830af",
+    "_links":
+      {"addresses":
+        {
+          "href":"http://user/customers/57a98d98e4b00679b4a830af/addresses",
+        },
+        "cards":
+        {
+          "href":"http://user/customers/57a98d98e4b00679b4a830af/cards",
+        },
+        "customer":{
+          "href":"http://user/customers/57a98d98e4b00679b4a830af",
+        },"self":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830af",
+      },
+      },
+  },
+  {
+    "firstName":"User",
+    "lastName":"Name",
+    "username":"user",
+    "id":"57a98d98e4b00679b4a830b2",
+    "_links": {
+      "addresses":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b2/addresses",
+      },
+      "cards":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b2/cards",
+      },"customer":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b2",
+      },"self":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b2",
+      },
+    },
+  },{
+    "firstName":"User1",
+    "lastName":"Name1",
+    "username":"user1",
+    "id":"57a98d98e4b00679b4a830b5",
+    "_links":{
+      "addresses":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b5/addresses",
+      },
+      "cards":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b5/cards",
+      },"customer":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b5",
+      },"self":{
+        "href":"http://user/customers/57a98d98e4b00679b4a830b5",
+      },
+    },
+  },{"firstName":"Test","lastName":"User","username":"Test User","id":"5ba0a38bee11cb00018b0cc6","_links":{"addresses":{"href":"http://user/customers/5ba0a38bee11cb00018b0cc6/addresses"},"cards":{"href":"http://user/customers/5ba0a38bee11cb00018b0cc6/cards"},"customer":{"href":"http://user/customers/5ba0a38bee11cb00018b0cc6"},"self":{"href":"http://user/customers/5ba0a38bee11cb00018b0cc6"}}},{"firstName":"test","lastName":"test","username":"test test","id":"5ba0a3b3ee11cb00018b0cc7","_links":{"addresses":{"href":"http://user/customers/5ba0a3b3ee11cb00018b0cc7/addresses"},"cards":{"href":"http://user/customers/5ba0a3b3ee11cb00018b0cc7/cards"},"customer":{"href":"http://user/customers/5ba0a3b3ee11cb00018b0cc7"},"self":{"href":"http://user/customers/5ba0a3b3ee11cb00018b0cc7"}}},{"firstName":"test2","lastName":"test2","username":"test2 test2","id":"5ba0a48aee11cb00018b0cc8","_links":{"addresses":{"href":"http://user/customers/5ba0a48aee11cb00018b0cc8/addresses"},"cards":{"href":"http://user/customers/5ba0a48aee11cb00018b0cc8/cards"},"customer":{"href":"http://user/customers/5ba0a48aee11cb00018b0cc8"},"self":{"href":"http://user/customers/5ba0a48aee11cb00018b0cc8"}}},{"firstName":"Savva","lastName":"Genchevskiy","username":"Savva Genchevskiy","id":"5ba5dfd6ee11cb00018b0cc9","_links":{"addresses":{"href":"http://user/customers/5ba5dfd6ee11cb00018b0cc9/addresses"},"cards":{"href":"http://user/customers/5ba5dfd6ee11cb00018b0cc9/cards"},"customer":{"href":"http://user/customers/5ba5dfd6ee11cb00018b0cc9"},"self":{"href":"http://user/customers/5ba5dfd6ee11cb00018b0cc9"}}}]}}
+
