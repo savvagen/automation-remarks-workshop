@@ -108,7 +108,6 @@ clean.doFirst {
     delete "${rootDir}/api-tests/allure-report"
     delete "${rootDir}/api-tests/target"
     delete "${rootDir}/api-tests/build"
-    delete "${rootDir}/api-tests/video"
-
+    delete "${rootDir}/api-tests/out"
 }
 

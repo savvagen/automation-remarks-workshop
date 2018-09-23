@@ -49,6 +49,51 @@ dependencies {
 }
 
 
+
+import io.qameta.allure.gradle.task.AllureReport
+task allureAggregatedReport(type: AllureReport) {
+    allure.resultsDir
+}
+
+
+
+// Enabled Native JUnit 5 support for Gradle 4.6+
+test {
+    //useJUnitPlatform()
+    useJUnitPlatform{
+        includeTags 'registration-tests' //, 'smoke & feature-a'
+        // excludeTags 'slow', 'ci'
+        includeEngines 'junit-jupiter'
+        excludeEngines 'junit-vintage'
+    }
+    failFast = true
+    testLogging {
+        showStandardStreams = true
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
+    //System variables and properties
+    // ...
+    systemProperty 'junit.jupiter.conditions.deactivate', '*'
+    systemProperties = [
+            'junit.jupiter.extensions.autodetection.enabled': 'true',
+            'junit.jupiter.testinstance.lifecycle.default' : 'per_class',
+    ]
+    // Also you can configure this properties in /src/test/ersource/junit-platform.properties file
+    // ...
+}.finalizedBy allureAggregatedReport
+//test.finalizedBy allureAggregatedReport
+
+
+
 clean.doFirst {
     delete "${rootDir}/api-tests/allure-results"
     delete "${rootDir}/api-tests/allure-report"
