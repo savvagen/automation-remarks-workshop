@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import org.hamcrest.Matcher;
 
 @AllArgsConstructor
-public class ResponseBodyConditionWide implements Condition {
+public class ResponseBodyConditionArgs implements Condition {
 
     private String path;
     private Matcher matcher;

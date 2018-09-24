@@ -22,8 +22,8 @@ public class Conditions {
         return new ResponseBodyCondition(path, matcher);
     }
 
-    public static ResponseBodyConditionWide body(String path, Matcher matcher, Object additionalKeyMatcherPairs){
-        return new ResponseBodyConditionWide(path, matcher, additionalKeyMatcherPairs);
+    public static ResponseBodyConditionArgs body(String path, Matcher matcher, Object additionalKeyMatcherPairs){
+        return new ResponseBodyConditionArgs(path, matcher, additionalKeyMatcherPairs);
     }
 
     public static ResponseBodyConditionJson body(Matcher matcher){

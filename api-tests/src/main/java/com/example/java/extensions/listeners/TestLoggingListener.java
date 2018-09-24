@@ -1,10 +1,12 @@
 package com.example.java.extensions.listeners;
 
 
+import junit.framework.TestListener;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.extension.*;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Slf4j
 public class TestLoggingListener implements BeforeAllCallback,
@@ -14,6 +16,7 @@ public class TestLoggingListener implements BeforeAllCallback,
         BeforeTestExecutionCallback,
         AfterTestExecutionCallback {
 
+    //Logger log = LoggerFactory.getLogger(TestLoggingListener.class);
 
     public static String separator = "*" + StringUtils.repeat("*", 80);
 
