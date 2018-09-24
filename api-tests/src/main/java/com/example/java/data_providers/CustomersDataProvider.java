@@ -1,6 +1,6 @@
-package com.example.data_providers;
+package com.example.java.data_providers;
 
-import com.example.models.Customer;
+import com.example.java.models.Customer;
 
 import java.util.stream.Stream;
 

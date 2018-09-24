@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.java.models;
 
 import lombok.*;
 import lombok.experimental.Accessors;

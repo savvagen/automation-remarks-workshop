@@ -5,18 +5,23 @@ plugins {
 }
 
 ext {
-    restAssuredVersion='3.1.1'
-    jaksonCoreVersion='2.9.6'
+    restAssuredVersion = '3.1.1'
+    jaksonCoreVersion = '2.9.6'
 }
 
 
 allure {
     version = "$allureVersion"
+
     autoconfigure = true
+    configuration = 'compile'
+
     aspectjweaver = true
     aspectjVersion = '1.8.10'
+
     resultsDir = file("${rootDir}/api-tests/build/allure-results")
     reportDir = file("${rootDir}/api-tests/build/reports/allure-report")
+
     useJUnit5 {
         version = "${allureVersion}"
     }
@@ -31,19 +36,22 @@ dependencies {
             ["io.rest-assured:rest-assured:$restAssuredVersion"],
             ["io.rest-assured:json-path:$restAssuredVersion"],
             ["io.rest-assured:xml-path:$restAssuredVersion"],
+            ["io.rest-assured:json-schema-validator:$restAssuredVersion"],
             // Json Libraries
             ['org.json:json:20180813'],
             ["com.fasterxml.jackson.core:jackson-databind:$jaksonCoreVersion"],
             ["com.fasterxml.jackson.core:jackson-core:$jaksonCoreVersion"],
+            // Allure
+            ["io.qameta.allure:allure-rest-assured:${allureVersion}"],
+            // Helper libraries
+            ["org.projectlombok:lombok:1.18.2"],
+            ["com.github.javafaker:javafaker:0.16"],
     )
-    // Allure
-    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: "${allureVersion}"
-    // Helper libraries
-    compile group: 'io.rest-assured', name: 'json-schema-validator', version: "$restAssuredVersion"
-    compile 'commons-lang:commons-lang:2.6'
-    compile 'javax.validation:validation-api:1.1.0.CR2'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
+    //Logging
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+
 
 
 }
