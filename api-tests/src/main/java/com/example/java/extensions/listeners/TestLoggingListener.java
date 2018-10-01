@@ -33,12 +33,12 @@ public class TestLoggingListener implements BeforeAllCallback,
 
     @Override
     public void beforeTestExecution(ExtensionContext context) throws Exception {
-        log.info("\n" + separator + "\nStarting \'" + context.getDisplayName() + "\' test.\n" + separator);
+        log.info("\n" + separator + "\nStarting \'" + context.getDisplayName() + "\' tests.\n" + separator);
     }
 
     @Override
     public void afterTestExecution(ExtensionContext context) throws Exception {
-        log.info("\n" + separator + "\nFinnishing \'" + context.getDisplayName() + "\' test.\n" + separator);
+        log.info("\n" + separator + "\nFinnishing \'" + context.getDisplayName() + "\' tests.\n" + separator);
     }
 
 

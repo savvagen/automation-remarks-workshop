@@ -17,6 +17,7 @@ import java.util.stream.Stream;
 @Slf4j
 public class LoggableAspect {
 
+
     @Pointcut("execution(* com.example.java.services.*.*(..))")  // -> (2)
     public void anyMethod() {
         //pointcut body, should be empty

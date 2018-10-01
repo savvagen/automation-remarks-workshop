@@ -4,7 +4,7 @@ package com.example.groovy
 import com.example.java.TestBase
 import org.junit.jupiter.api.*
 
-@Tag("registration-tests")
+@Tag("tests-tests")
 class RegistrationTests extends TestBase {
 
 /*
@@ -30,7 +30,7 @@ class RegistrationTests extends TestBase {
 
 
     @Test
-    @DisplayName("Positive registration")
+    @DisplayName("Positive tests")
     @Positive
     void registerCustomer(){
         ValidatableResponse r = customerService.registerCustomer(account);
@@ -58,8 +58,8 @@ class RegistrationTests extends TestBase {
 
     @ParameterizedTest(name = "Register wit invalid data.")
     @Negative
-    @MethodSource("com.example.java.data_providers.CustomersDataProvider#registrationData")
-    void registerCustomerWithInvalidData(Customer account){
+    @MethodSource("com.example.java.data_providers.UsersDataProvider#registrationData")
+    void registerCustomerWithInvalidData(User account){
         ValidatableResponse r = customerService.registerCustomer(account);
         assertAll("Verify that response is 400 or 500:",
                 () -> assertEquals(500, r.extract().statusCode()),

@@ -48,7 +48,7 @@ subprojects {
 
     dependencies {
         // Junit Jupiter
-        testImplementation(
+        /*testImplementation*/ compile (
                 "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion",   // JUnit Jupiter API for writing tests and extensions.
                 "org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion" // Support for parameterized tests in JUnit Jupiter.
         )

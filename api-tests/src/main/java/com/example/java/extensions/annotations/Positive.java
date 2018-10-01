@@ -1,4 +1,4 @@
-package com.example.java.extensions.tags;
+package com.example.java.extensions.annotations;
 
 
 import org.junit.jupiter.api.Tag;
@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
-@Tag("negative")
-public @interface Negative {
+@Tag("positive")
+public @interface Positive {
 }

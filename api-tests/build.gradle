@@ -69,8 +69,8 @@ task allureAggregatedReport(type: AllureReport) {
 test {
     //useJUnitPlatform()
     useJUnitPlatform{
-        includeTags 'registration-tests' //, 'smoke & feature-a'
-        // excludeTags 'slow', 'ci'
+        includeTags 'registration-tests', 'catalog-tests', 'positive' //, 'smoke & feature-a'
+        excludeTags 'negative'
         includeEngines 'junit-jupiter'
         excludeEngines 'junit-vintage'
     }
@@ -99,6 +99,7 @@ test {
     // ...
 }.finalizedBy allureAggregatedReport
 //test.finalizedBy allureAggregatedReport
+
 
 
 

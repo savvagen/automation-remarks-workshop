@@ -12,7 +12,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 @NoArgsConstructor
 @ToString
 @Accessors(chain = true)
-public class Customer {
+public class User {
 
     @JsonProperty("firstName")
     public String firstName;

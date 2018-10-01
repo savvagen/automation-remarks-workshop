@@ -1,10 +1,10 @@
 package com.example.groovy.services
 
-import com.example.java.models.Customer;
+
+import com.example.java.models.User;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
-import io.restassured.response.ValidatableResponse;
-import io.restassured.specification.RequestSpecification;
+import io.restassured.response.ValidatableResponse
 
 public class CustomerService {
 
@@ -42,7 +42,7 @@ public class CustomerService {
 
 
     @Step
-    def registerCustomer(Customer customer){
+    def registerCustomer(User customer){
         requestSpec.when().body(customer)
                 .post("register")
                 .then().log().all()
