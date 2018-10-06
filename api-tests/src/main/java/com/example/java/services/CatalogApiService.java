@@ -20,7 +20,7 @@ public class CatalogApiService {
         this.requestSpec = RestAssured.given()
                 .relaxedHTTPSValidation()
                 .contentType(defaultContentType)
-                .filters(/*new RequestLoggingFilter(), new ResponseLoggingFilter(),*/ new AllureRestAssured())
+                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new AllureRestAssured())
                 .basePath(basePath);
     }
 

@@ -1,6 +1,6 @@
 <aspectj>
     <aspects>
         <aspect name="com.example.java.aspect.LoggableAspect"/>
-        <!--<aspect name="com.example.java.aspect.AllureStepAspect"/>-->
+        <aspect name="com.example.java.aspect.AllureStepAspect"/>
     </aspects>
 </aspectj>

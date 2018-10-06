@@ -24,7 +24,8 @@ public class UserApiService {
         this.requestSpec = RestAssured.given()
                 .relaxedHTTPSValidation()
                 .contentType(defaultContentType)
-                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter(), new AllureRestAssured())
+                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
+                .filter(new AllureRestAssured())
                 .basePath(basePath);
     }
 

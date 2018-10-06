@@ -8,6 +8,9 @@ import com.example.java.extensions.annotations.TestOnLinux;
 import com.example.java.extensions.listeners.TestLoggingListener;
 import com.example.java.models.Product;
 import com.fasterxml.jackson.core.type.TypeReference;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -28,6 +31,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.condition.JRE.*;
 import static org.junit.jupiter.api.condition.OS.*;
 
+@Epic("SmokeTests")
+@Feature("Catalog")
 @Tag("catalog-tests")
 @DisplayName("Catalog tests")
 @ExtendWith(TestLoggingListener.class)
@@ -42,6 +47,7 @@ public class CatalogTests extends TestBase {
     @Test
     @Positive
     @TestOnLinux
+    @Story("Get catalog items with product and catalog validation")
     @DisplayName("Get Catalog items ╯°□°）╯ with wide validation")
     void getCatalogItemsWithMoreAssertions(){
         Product[] products =  gson.fromJson(catalogApiService.getCatalog()

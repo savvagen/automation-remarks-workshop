@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
 @SelectClasses({RegistrationTests.class, CatalogTests.class})
-@IncludeTags("positive")
+//@IncludeTags("positive")
 @ExcludeTags("negative")
 @SuiteDisplayName("My Test Suite")
 public class SmokeTests {

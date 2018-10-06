@@ -2,12 +2,16 @@ package com.example.java.system_tests;
 
 import com.example.java.assertions.AssertableResponse;
 import com.example.java.extensions.annotations.TestOnLinux;
+import com.example.java.extensions.listeners.AllureLoggingListener;
 import com.example.java.extensions.listeners.TestLoggingListener;
 import com.example.java.extensions.annotations.Negative;
 import com.example.java.extensions.annotations.Positive;
 import com.example.java.TestBase;
 import com.example.java.models.User;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 import org.junit.jupiter.api.condition.EnabledIfSystemProperty;
@@ -30,10 +34,11 @@ import static io.restassured.module.jsv.JsonSchemaValidator.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@Epic("SmokeTests")
+@Feature("Registration")
 @Tag("registration-tests")
 @DisplayName("Registration tests")
-@ExtendWith(TestLoggingListener.class)
+@ExtendWith({TestLoggingListener.class, AllureLoggingListener.class})
 // For Parallel execution
 @Execution(ExecutionMode.SAME_THREAD)
 public class RegistrationTests extends TestBase {
@@ -88,6 +93,7 @@ public class RegistrationTests extends TestBase {
     @Positive
     @TestOnLinux
     @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*") // Only on 64 Bit architectures
+    @Story("Register user from Ukraine region")
     @DisplayName("Register user form United States")
     void registerUkCustomer(){
         userApiService.registerCustomer(usUser)
@@ -101,6 +107,7 @@ public class RegistrationTests extends TestBase {
 
     @Positive
     @ParameterizedTest
+    @Story("Register users from different regions")
     @DisplayName("Register user from multiply regions")
     @ValueSource(strings = {"ru", "uk", "bg", "de", "en", "en-US", "en-ZA"})
     void registerRusCustomersFromDifferentRegions(String region){
