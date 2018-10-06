@@ -1,4 +1,4 @@
-package com.example.java;
+package com.example.java.system_tests;
 
 import com.example.java.assertions.AssertableResponse;
 import com.example.java.extensions.annotations.TestOnLinux;
@@ -34,6 +34,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @Tag("registration-tests")
 @DisplayName("Registration tests")
 @ExtendWith(TestLoggingListener.class)
+// For Parallel execution
+@Execution(ExecutionMode.SAME_THREAD)
 public class RegistrationTests extends TestBase {
 
 

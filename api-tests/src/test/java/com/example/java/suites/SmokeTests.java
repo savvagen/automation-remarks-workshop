@@ -1,7 +1,7 @@
-package com.example.java;
+package com.example.java.suites;
 
-import com.example.java.RegistrationTests;
-import com.example.java.CatalogTests;
+import com.example.java.system_tests.CatalogTests;
+import com.example.java.system_tests.RegistrationTests;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.ExcludeTags;
 import org.junit.platform.suite.api.IncludeTags;

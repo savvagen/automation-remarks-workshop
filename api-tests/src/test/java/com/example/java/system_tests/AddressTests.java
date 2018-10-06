@@ -1,4 +1,4 @@
-package com.example.java;
+package com.example.java.system_tests;
 
 import com.example.java.TestBase;
 import com.example.java.models.Address;

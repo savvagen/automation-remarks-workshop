@@ -1,4 +1,4 @@
-package com.example.java;
+package com.example.java.system_tests;
 
 
 import com.example.java.TestBase;
@@ -29,7 +29,10 @@ import static org.junit.jupiter.api.condition.JRE.*;
 import static org.junit.jupiter.api.condition.OS.*;
 
 @Tag("catalog-tests")
+@DisplayName("Catalog tests")
 @ExtendWith(TestLoggingListener.class)
+// For Parallel execution
+@Execution(ExecutionMode.SAME_THREAD)
 public class CatalogTests extends TestBase {
 
 
@@ -157,8 +160,8 @@ public class CatalogTests extends TestBase {
     @Test
     @Disabled
     @Negative
-    void getProdcutsWithJaksonLibraryMapping2() throws IOException {
-        Product[] products = objectMapper.readValue(catalogApiService.getCatalogItem(testProduct.id)
+    void getProdcutsWithGsonLibraryMapping() throws IOException {
+        Product[] products = gson.fromJson(catalogApiService.getCatalogItem(testProduct.id)
                 .shouldHave(statusCode(200))
                 .response.extract().body().asString(), Product[].class);
         assertAll("Validate tests product",
