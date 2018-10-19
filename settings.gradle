@@ -1,4 +1,5 @@
 rootProject.name = 'savva-genchevskiy-mentoring'
 include 'api-tests'
 include 'ui-tests'
+include 'api-swagger-tests'
 

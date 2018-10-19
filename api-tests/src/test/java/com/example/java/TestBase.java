@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Locale;
 
@@ -52,5 +53,7 @@ public class TestBase {
                 .setUsername("savva.genchevskiy")
                 .setId("5bb0acefee11cb00018b0de3").setPassword("1234");
     }
+
+
 
 }

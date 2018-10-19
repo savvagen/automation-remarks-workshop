@@ -1,0 +1,131 @@
+plugins {
+    id 'application'
+    id 'maven-publish'
+    id "io.qameta.allure" version "2.5"
+    id "io.franzbecker.gradle-lombok" version "1.14"
+    id "org.hidetake.swagger.generator" version "2.14.0"
+
+}
+
+ext {
+    restAssuredVersion = '3.1.1'
+    jaksonCoreVersion = '2.9.6'
+}
+
+
+allure {
+    version = "$allureVersion"
+
+    autoconfigure = true
+    configuration = 'compile'
+
+    aspectjweaver = true
+    aspectjVersion = '1.8.10'
+
+    resultsDir = file("${rootDir}/api-tests/build/allure-results")
+    reportDir = file("${rootDir}/api-tests/build/reports/allure-report")
+
+    useJUnit5 {
+        version = "${allureVersion}"
+    }
+    downloadLink = "https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/$allureVersion/allure-${allureVersion}.zip"
+}
+
+
+swaggerSources {
+    petstore {
+        inputFile = file('config/api/swagger.json')
+        code {
+            language = 'java'
+            configFile = file('config/api/swagger-codegen-config.json')
+        }
+    }
+}
+
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+
+dependencies {
+    // Swagger CodeGen
+    swaggerCodegen "io.swagger:swagger-codegen-cli:2.4.0-20181003.110320-337"
+    compile "com.petstore:swagger-codegen-petstore-api-client:0.0.1-SNAPSHOT"
+    compile files("/libs/swagger-java-client-1.0.0.jar")
+
+    // Versions 2.3 and 3.0 do not contain rest-assured client. Use 2.4 version stapshot versions:
+    // https://oss.sonatype.org/content/repositories/snapshots/io/swagger/swagger-codegen-cli/2.4.0-SNAPSHOT/
+    
+    //swaggerCodegen 'io.swagger:swagger-codegen-cli:2.3.1'             // Swagger Codegen V2
+    //swaggerCodegen 'io.swagger.codegen.v3:swagger-codegen-cli:3.0.0'  // or Swagger Codegen V3
+    
+    
+    // Additional libraries (are required for Swagger codeGen)
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
+    compile group: 'org.threeten', name: 'threetenbp', version: '1.3.7'
+    compile group: 'io.gsonfire', name: 'gson-fire', version: '1.8.3'
+ 
+    compile(
+            //Test Framework
+            ["io.rest-assured:rest-assured:$restAssuredVersion"],
+            ["io.rest-assured:json-path:$restAssuredVersion"],
+            ["io.rest-assured:xml-path:$restAssuredVersion"],
+            ["io.rest-assured:json-schema-validator:$restAssuredVersion"],
+            // Json Libraries
+            ['org.json:json:20180813'],
+            ["com.fasterxml.jackson.core:jackson-databind:$jaksonCoreVersion"],
+            ["com.fasterxml.jackson.core:jackson-core:$jaksonCoreVersion"],
+            // Allure
+            ["io.qameta.allure:allure-rest-assured:${allureVersion}"],
+            // Helper libraries
+            ["org.projectlombok:lombok:1.18.2"],
+            ["com.github.javafaker:javafaker:0.16"],
+    )
+    //Logging
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+
+
+}
+
+
+import io.qameta.allure.gradle.task.AllureReport
+task allureAggregatedReport(type: AllureReport) {
+    allure.resultsDir
+}
+
+
+
+def apiClientCodePath = "build/swagger-code-petstore"
+
+task buildPetStoreApiClientJars(type: GradleBuild){
+    dir = "$apiClientCodePath"
+    tasks = ['clean', 'build']
+}
+
+publishToMavenLocal.dependsOn buildPetStoreApiClientJars
+
+publishing {
+    publications {
+        petstore(MavenPublication) {
+            groupId = 'com.petstore'
+            artifactId = 'swagger-codegen-petstore-api-client'
+            version = '0.0.1-SNAPSHOT'
+
+            artifact file("$apiClientCodePath/build/libs/swagger-codegen-event-api-client-0.0.1-SNAPSHOT.jar")
+            //from components.java
+        }
+    }
+}
+
+task updateSwaggerSpecification {
+
+}
+
+test.dependsOn updateSwaggerSpecification
