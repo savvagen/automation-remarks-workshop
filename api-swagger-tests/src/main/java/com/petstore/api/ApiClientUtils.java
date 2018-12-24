@@ -2,6 +2,7 @@ package com.petstore.api;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ErrorLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import java.util.function.Supplier;
 
@@ -18,6 +19,6 @@ public class ApiClientUtils {
                 .setContentType(ContentType.JSON)
                 .setConfig(config.objectMapperConfig(objectMapperConfig().defaultObjectMapper(gson())))
                 .setBaseUri(BASE_URL)
-                .addFilter(new ErrorLoggingFilter());
+                .addFilter(new ErrorLoggingFilter()).addFilter(new ResponseLoggingFilter());
     }
 }

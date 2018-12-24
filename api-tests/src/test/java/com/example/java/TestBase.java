@@ -1,6 +1,5 @@
 package com.example.java;
 
-import com.example.groovy.models.Customer;
 import com.example.java.models.Product;
 import com.example.java.models.User;
 import com.example.java.services.CatalogApiService;
@@ -8,13 +7,10 @@ import com.example.java.services.UserApiService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
+import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.util.Locale;
-
-import static io.restassured.RestAssured.baseURI;
-
 
 
 public class TestBase {
@@ -35,7 +31,8 @@ public class TestBase {
 
     @BeforeAll
     static void setUpServices(){
-        baseURI = "http://35.232.243.253";
+        RestAssured.baseURI = "http://35.232.243.253";
+
         userApiService = new UserApiService("/");
         catalogApiService = new CatalogApiService("/catalogue");
 

@@ -4,9 +4,7 @@ import com.example.java.models.User;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.params.provider.Arguments;
 
-import java.util.ArrayList;
 import java.util.Locale;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.params.provider.Arguments.arguments;

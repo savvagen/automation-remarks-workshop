@@ -5,13 +5,15 @@ import com.example.java.assertions.AssertableResponse;
 import com.example.java.models.Address;
 import com.example.java.models.Card;
 import com.example.java.models.User;
-import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+import java.util.Map;
 
 
 @Slf4j
@@ -24,7 +26,7 @@ public class UserApiService {
         this.requestSpec = RestAssured.given()
                 .relaxedHTTPSValidation()
                 .contentType(defaultContentType)
-                .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
+                //.filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
                 .filter(new AllureRestAssured())
                 .basePath(basePath);
     }
@@ -54,6 +56,12 @@ public class UserApiService {
         return new AssertableResponse(requestSpec.when()
                 .delete("customers/" + id)
                 .then());
+    }
+
+    public void deleteCustomerWithName(String userName){
+        List<Map> customers = getCustomers().response.extract().body()
+                .jsonPath().param("userName", userName).get("_embedded.customer.findAll { customer -> customer.username = userName }");
+        customers.forEach((customer)-> deleteCustomer(customer.get("id").toString()));
     }
 
     public AssertableResponse registerCustomer(User user){

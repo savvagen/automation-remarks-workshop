@@ -52,4 +52,13 @@ public class UserApiService {
                 .usernamePath(userName)
                 .execute(RESPONSE_HANDLER);
     }
+
+    public Response loginUser(User user){
+        Response response = apiClient.user().loginUser()
+                .usernameQuery(user.getUsername())
+                .passwordQuery(user.getPassword())
+                .execute(RESPONSE_RESPONSE_HANDLER);
+        return response;
+    }
+
 }

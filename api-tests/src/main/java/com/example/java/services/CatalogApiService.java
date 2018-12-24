@@ -2,7 +2,6 @@ package com.example.java.services;
 
 
 import com.example.java.assertions.AssertableResponse;
-import com.example.java.models.User;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;

@@ -69,7 +69,7 @@ task allureAggregatedReport(type: AllureReport) {
 test {
     //useJUnitPlatform()
     useJUnitPlatform{
-        includeTags 'registration-tests', 'catalog-tests' //, 'smoke & feature-a'
+        includeTags 'registration-tests', 'catalog-tests'
         excludeTags 'negative'
         includeEngines 'junit-jupiter'
         excludeEngines 'junit-vintage'
@@ -95,10 +95,10 @@ test {
             'junit.jupiter.extensions.autodetection.enabled': 'true',
             'junit.jupiter.testinstance.lifecycle.default' : 'per_class',
     ]
-    // Also you can configure this properties in /src/test/ersource/junit-platform.properties file
+    // Also you can configure this properties in /src/tests/ersource/junit-platform.properties file
     // ...
 }.finalizedBy allureAggregatedReport
-//test.finalizedBy allureAggregatedReport
+//tests.finalizedBy allureAggregatedReport
 
 
 

@@ -1,10 +1,9 @@
 package com.example.java.suites;
 
-import com.example.java.system_tests.CatalogTests;
-import com.example.java.system_tests.RegistrationTests;
+import com.example.java.api_tests.CatalogTests;
+import com.example.java.api_tests.RegistrationTests;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.ExcludeTags;
-import org.junit.platform.suite.api.IncludeTags;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.SuiteDisplayName;
 import org.junit.runner.RunWith;
@@ -58,7 +57,7 @@ public class JUnit5TestSuiteExample
 
 ------------------------------
 @IncludeClassNamePatterns Example
-Include all test classes with name ending with ATest or ATests.
+Include all tests classes with name ending with ATest or ATests.
 -------------------------------
 
 @RunWith(JUnitPlatform.class)
@@ -72,7 +71,7 @@ public class JUnit5TestSuiteExample
 
 -------------------------------------
 @ExcludeClassNamePatterns Example
-Exclude all test classes with name ending with ATest or ATests.
+Exclude all tests classes with name ending with ATest or ATests.
 --------------------------------------
 
 @RunWith(JUnitPlatform.class)
@@ -85,7 +84,7 @@ public class JUnit5TestSuiteExample
 
 ------------------------------------------
 @IncludeTags Example
-This test suite will run all tests tagged with production inside package com.howtodoinjava.junit5.examples (and it’s sub-packages).
+This tests suite will run all tests tagged with production inside package com.howtodoinjava.junit5.examples (and it’s sub-packages).
 -------------------------------------------
 
 @RunWith(JUnitPlatform.class)
@@ -98,7 +97,7 @@ public class JUnit5TestSuiteExample
 
 -----------------------------------------
 @ExcludeTags Example
-This test suite will exclude all tests tagged with development inside package com.howtodoinjava.junit5.examples (and it’s sub-packages).
+This tests suite will exclude all tests tagged with development inside package com.howtodoinjava.junit5.examples (and it’s sub-packages).
 -----------------------------------------
 
 @RunWith(JUnitPlatform.class)

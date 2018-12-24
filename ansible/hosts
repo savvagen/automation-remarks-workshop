@@ -1,0 +1,9 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python
+ansible_user=root
+ansible_ssh_private_key_file=/home/savva/.ssh/do_rsa.pub
+
+[selenoid]
+159.65.93.184
+# Add other hosts here
+
