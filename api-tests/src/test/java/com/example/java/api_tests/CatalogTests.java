@@ -31,11 +31,11 @@ import static org.junit.jupiter.api.condition.OS.*;
 
 @Epic("SmokeTests")
 @Feature("Catalog")
-
 @DisplayName("Catalog tests")
+@Tag("catalog-api")
 @ExtendWith(TestLoggingListener.class)
 // For Parallel execution
-@Execution(ExecutionMode.SAME_THREAD)
+//@Execution(ExecutionMode.SAME_THREAD)
 public class CatalogTests extends TestBase {
 
 
@@ -147,6 +147,7 @@ public class CatalogTests extends TestBase {
     }
 
     @Test
+    @Disabled
     @Negative
     void getProdcutsWithJaksonLibraryMapping() throws IOException {
         List<Product> products = objectMapper.readValue(catalogApiService.getCatalogItem(testProduct.id)
@@ -164,7 +165,7 @@ public class CatalogTests extends TestBase {
     @Test
     @Disabled
     @Negative
-    void getProdcutsWithGsonLibraryMapping() throws IOException {
+    void getProdcutsWithGsonLibraryMapping() {
         Product[] products = gson.fromJson(catalogApiService.getCatalogItem(testProduct.id)
                 .shouldHave(statusCode(200))
                 .response.extract().body().asString(), Product[].class);

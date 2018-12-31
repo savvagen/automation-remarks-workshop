@@ -18,7 +18,6 @@ class MainPage extends WebPage {
     }
 
 
-
     def loginButton = $("#login > a")
     def registerButton = $("#register > a")
     def userNameButton = $("#howdy")

@@ -34,11 +34,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Epic("SmokeTests")
 @Feature("Registration")
-
 @DisplayName("Registration tests")
+@Tag("register-api")
 @ExtendWith({TestLoggingListener.class, AllureLoggingListener.class})
 // For Parallel execution
-@Execution(ExecutionMode.SAME_THREAD)
+//@Execution(ExecutionMode.SAME_THREAD)
 public class RegistrationTests extends TestBase {
 
 
@@ -50,9 +50,12 @@ public class RegistrationTests extends TestBase {
 
     @BeforeAll
     static void steUpTest(){
+        /*List<Map> customers = userApiService.getCustomers().response.extract().body()
+                .jsonPath().param("userName", "savva.genchevskiy")
+                .get("_embedded.customer.findAll { customer -> customer.username != userName }");*/
         List<Map> customers = userApiService.getCustomers().response.extract().body()
                 .jsonPath().param("userName", "savva.genchevskiy")
-                .get("_embedded.customer.findAll { customer -> customer.username != userName }");
+                .get("_embedded.customer.findAll()");
         customers.forEach((customer)-> userApiService.deleteCustomer(customer.get("id").toString()));
     }
 
@@ -177,7 +180,7 @@ public class RegistrationTests extends TestBase {
 
 
     @Negative
-    @ParameterizedTest(name = "Register wit invalid data.")
+    @ParameterizedTest(name = "Register wit invalid user data.")
     @MethodSource("com.example.java.data_providers.UsersDataProvider#invalidUserRegistrationData")
     void registerWithInvalidUsers(int statusCode, String contentType, User user){
         userApiService.registerCustomer(user)

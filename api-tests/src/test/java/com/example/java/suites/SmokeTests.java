@@ -2,6 +2,8 @@ package com.example.java.suites;
 
 import com.example.java.api_tests.CatalogTests;
 import com.example.java.api_tests.RegistrationTests;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.ExcludeTags;
 import org.junit.platform.suite.api.SelectClasses;
@@ -13,6 +15,7 @@ import org.junit.runner.RunWith;
 //@IncludeTags("positive")
 @ExcludeTags("negative")
 @SuiteDisplayName("My Test Suite")
+@Execution(ExecutionMode.SAME_THREAD)
 public class SmokeTests {
 }
 

@@ -45,12 +45,10 @@ task allureAggregatedReport(type: AllureReport) {
     allure.resultsDir
 }
 
-
-
-test {
+task testUi(type: Test){
     //useJUnitPlatform()
     useJUnitPlatform{
-        includeTags 'LoginTests', 'RegistrationTests'
+        includeTags 'login-ui', 'catalog-ui'
         excludeTags 'Example'
         includeEngines 'junit-jupiter'
         //excludeEngines 'junit-vintage'
@@ -62,6 +60,24 @@ test {
         showStandardStreams = true
     }
 }.finalizedBy allureAggregatedReport
+
+
+test {
+    //useJUnitPlatform()
+    useJUnitPlatform{
+        includeTags 'login-ui', 'catalog-ui'
+        excludeTags 'Example'
+        includeEngines 'junit-jupiter'
+        //excludeEngines 'junit-vintage'
+    }
+    failFast = true
+    testLogging {
+        events 'PASSED', 'FAILED', 'SKIPPED'
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
+}.finalizedBy allureAggregatedReport
+
 
 
 

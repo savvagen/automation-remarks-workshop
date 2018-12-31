@@ -1,6 +1,7 @@
 package com.example.java.suites;
 
 
+import com.example.java.tests.ui_tests.CatalogTests;
 import com.example.java.tests.ui_tests.LoginTests;
 import com.example.java.tests.ui_tests.RegistrationTests;
 import org.junit.jupiter.api.Tag;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT;
 @RunWith(JUnitPlatform.class)
 @Tag("UiTests")
 @Execution(CONCURRENT)
-@SelectClasses({LoginTests.class, RegistrationTests.class})
+@SelectClasses({LoginTests.class, RegistrationTests.class, CatalogTests.class})
 //@SuiteDisplayName("My Test Suite")
 public class SmokeTests {
 }

@@ -26,7 +26,6 @@ class LoginTests {
     @BeforeAll
     static void setUp() {
         SelenideLogger.addListener("allureSelenide", new AllureSelenide())
-
         Configuration.baseUrl = "http://35.232.243.253"
         Configuration.timeout = 8000
     }

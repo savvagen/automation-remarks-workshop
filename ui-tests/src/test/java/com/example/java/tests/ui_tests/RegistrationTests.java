@@ -14,6 +14,8 @@ import io.qameta.allure.Feature;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -25,19 +27,16 @@ import static com.codeborne.selenide.Condition.visible;
 @ExtendWith(SiteServiceExtension.class)
 @ExtendWith(ServiceParameterResolver.class)
 
-@Epic("SmokeTests")
-@Feature("Registration")
-@Tag("RegistrationTests")
+@Feature("registration")
+@Tag("register-ui")
 //@Execution(ExecutionMode.SAME_THREAD)
 public class RegistrationTests extends BaseTest implements TestLifecycleLogger {
 
-    @RegisterExtension public MainPage mainPage = new MainPage();
     @RegisterExtension public static User user = new User()
             .setFirstName("Savva")
             .setLastName("Genchevskiy")
             .setEmail("savva.genchevskiy@gmail.com")
-            .setUsername("savva.genchevskiy")
-            .setPassword("s.g19021992");
+            .setUsername("savva.genchevskiy").setPassword("s.g19021992");
 
 
     @BeforeEach
@@ -70,7 +69,7 @@ public class RegistrationTests extends BaseTest implements TestLifecycleLogger {
     }
 
     @ParameterizedTest
-    @Tag("LoginTests")
+    @Tag("invalidLogin")
     //@CsvFileSource(resources = "com/example/java/test_data/registrationData.csv", numLinesToSkip = 1)
     @MethodSource("com.example.java.test_data.RegistrationData#invalidRegistrationData")
     void unableToLoginWithInvalidCredentials(User invalidUser, String errorMessage){

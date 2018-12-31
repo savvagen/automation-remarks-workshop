@@ -14,32 +14,29 @@ import io.qameta.allure.Feature;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.example.java.extension_parameters.SiteServiceExtension.*;
 
-@ExtendWith({ScreenShooterExtension.class, TextReportExtension.class})
-//Register @WebService and Service parameters for tests and before & after conditions
-@ExtendWith(SiteServiceExtension.class)
-@ExtendWith(ServiceParameterResolver.class)
 
-@Epic("SmokeTests")
-@Feature("Login")
+
+@Feature("login")
+@Tag("login-ui")
+//Register @WebService and Service parameters for tests and before & after conditions
+@ExtendWith({ScreenShooterExtension.class, TextReportExtension.class, SiteServiceExtension.class, ServiceParameterResolver.class})
 //@Execution(ExecutionMode.SAME_THREAD)
 public class LoginTests extends BaseTest {
 
 
-
-    @RegisterExtension public MainPage mainPage = new MainPage();
     @RegisterExtension public static User user = new User()
             .setFirstName("Savva")
             .setLastName("Genchevskiy")
-            .setEmail("savva.genchevskiy@gmail.com")
-            .setUsername("savva.gench")
-            .setPassword("s.g19021992");
-
+            .setEmail("savva.gench@gmail.com")
+            .setUsername("savva.gench").setPassword("s.g19021992");
 
 
 
